@@ -1,0 +1,53 @@
+import java.util.*;
+class BubbleSorting
+{
+    void BubbleSort(int A[]) // function to sort an array in ASCENDING ORDER implementing bubble sort technique 
+    {
+        int n = A.length; // finding size of the array
+        int c = 0, f = 1;
+        for(int i=0; i<n-1 && f==1; i++)
+        {
+            f = 0;
+            for(int j=0; j<n-1-i; j++)
+            {
+                if(A[j] > A[j+1]) // for descending use if(A[j] < A[j+1])
+                {
+                    c = A[j];
+                    A[j] = A[j+1];
+                    A[j+1] = c;
+                    f = 1; // setting f = 1 when swapping takes place i.e. when array is not yet sorted
+                }
+            }
+            if(f == 0) // breaking out of the loop when array is sorted
+                break;
+        }
+        System.out.println("The Array Sorted in Ascending order is : ");
+        printArray(A);
+    }
+    void printArray(int A[]) // function for printing an array
+    {
+        int n = A.length;
+        for(int i=0; i<n; i++)
+        {
+            System.out.print(A[i]+ " ");
+        }
+        System.out.println();
+    }
+     
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        BubbleSorting ob = new BubbleSorting();
+        System.out.print("Enter the number of elements : ");
+        int n = sc.nextInt();
+        int A[] = new int[n];
+        for(int i=0; i<n; i++)
+        {
+            System.out.print("Enter element "+(i+1)+" : ");
+            A[i] = sc.nextInt();
+        }
+        System.out.println("The Original array is : ");
+        ob.printArray(A);
+        ob.BubbleSort(A);
+    }
+}
